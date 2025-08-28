@@ -1,9 +1,10 @@
 import { UserTipos } from "../enum/UserEnum";
-import {UserBaseInterface} from "../Interface/UserInterface";
-import { MentorInterface } from "../Interface/UserMentor";
-import { InvestidorInterface } from "../Interface/UserInvestidor";
-import { EmpreendedorInterface } from "../Interface/UserEmpreendedor";
-
+import {
+  UserBaseInterface,
+  MentorInterface,
+  InvestidorInterface,
+  EmpreendedorInterface,
+} from "../Interface/UserInterface";
 
 export abstract class UserBase {
   public nome: string;
@@ -12,7 +13,7 @@ export abstract class UserBase {
   public telefone: string;
   public provincia: string;
   public biografia: string;
-  public tipo: UserTipos;
+  public readonly tipo: UserTipos;
 
   constructor(props: UserBaseInterface) {
     this.nome = props.nome;
@@ -25,37 +26,37 @@ export abstract class UserBase {
   }
 }
 
-export class Mentor extends UserBase{
-    public experiencia: string[];
-    public areaMentoria: string[];
-    constructor(props: MentorInterface){
-        super({ ...props, tipo: UserTipos.MENTOR });
+export class Mentor extends UserBase {
+  public experiencia: string;
+  public areaMentoria: string[];
+  constructor(props: MentorInterface) {
+    super({ ...props, tipo: UserTipos.MENTOR });
     this.experiencia = props.experiencia;
     this.areaMentoria = props.areaMentoria;
   }
-    }
-
-export class Investidor extends UserBase{
-    public areasInteresse: string [];
-    public tipoProjecto: string[];
-    public oportunidades: string[];
-    constructor(props: InvestidorInterface){
-        super({...props, tipo: UserTipos.INVESTIDOR});
-        this.areasInteresse = props.areasInteresse;
-        this.tipoProjecto = props.tipoProjecto;
-        this.oportunidades = props.oportunidades;
-    }
 }
-export class Empreendedor extends UserBase{
-    public nomeProjecto: string;
-    public maturidade: string[];
-    public setorAtuacao: string[];
-    public pitch: string;
-    constructor(props: EmpreendedorInterface){
-        super({...props, tipo: UserTipos.INVESTIDOR})
-        this.nomeProjecto= props.nomeProjecto;
-        this.maturidade = props.maturidade;
-        this.setorAtuacao= props.setorAtuacao;
-        this.pitch= props.pitch
-    }
+
+export class Investidor extends UserBase {
+  public areasInteresse: string[];
+  public tipoProjecto: string[];
+  public oportunidades: string[];
+  constructor(props: InvestidorInterface) {
+    super({ ...props, tipo: UserTipos.INVESTIDOR });
+    this.areasInteresse = props.areasInteresse;
+    this.tipoProjecto = props.tipoProjecto;
+    this.oportunidades = props.oportunidades;
+  }
+}
+export class Empreendedor extends UserBase {
+  public nomeProjecto: string;
+  public maturidade: string[];
+  public setorAtuacao: string[];
+  public pitch: string;
+  constructor(props: EmpreendedorInterface) {
+    super({ ...props, tipo: UserTipos.EMPREENDEDOR });
+    this.nomeProjecto = props.nomeProjecto;
+    this.maturidade = props.maturidade;
+    this.setorAtuacao = props.setorAtuacao;
+    this.pitch = props.pitch;
+  }
 }

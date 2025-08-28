@@ -8,3 +8,19 @@ export interface UserBaseInterface{
      biografia: string,
      tipo: UserTipos
 }
+export interface InvestidorInterface extends UserBaseInterface{
+    areasInteresse: string[];
+  tipoProjecto: string[];
+  oportunidades: string[];
+
+}
+export interface MentorInterface extends UserBaseInterface{
+    experiencia: string;
+    areaMentoria: string[];
+}
+export interface EmpreendedorInterface extends UserBaseInterface{
+    nomeProjecto: string;
+    maturidade: string[];
+    setorAtuacao: string[];
+    pitch: string;
+}
